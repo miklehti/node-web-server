@@ -2,6 +2,9 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+//herokua varten, heroku asettaa portin
+const port = process.env.PORT || 3000;
+
 var app = express();
 
 //handelbars example
@@ -58,6 +61,7 @@ app.get('/bad', (req, res) => {
 });
 
 // sitoo aplikaation johonkin porttiin. toinen argumentti funktio
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
+// ei kovakoodata porttia 3000, heroku vaatii ympäristömuuttujaa
+app.listen(port, () => {
+  console.log(`Server is up on port ${port}`);
 });
